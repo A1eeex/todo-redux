@@ -1,8 +1,8 @@
 import React from "react";
 import { AiFillLike, AiFillDislike } from "react-icons/ai";
-import { decrementLikes, incrementLikes } from "./redux/action";
+import { decrementLikes, incrementLikes } from "../redux/action";
 import { useDispatch, useSelector } from "react-redux";
-import { IS_DISLIKED, IS_LIKED } from "./redux/types";
+import { IS_DISLIKED, IS_LIKED } from "../redux/types";
 const Likes = () => {
   const dispatch = useDispatch();
 

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import SingleComment from "./SingleComment";
 import { useDispatch, useSelector } from "react-redux";
-import { commentCreate, commentLoad, commentShow } from "./redux/action";
-import { commentsReducer } from "./redux/commentsReducer";
-
+import { commentCreate, commentLoad, commentShow } from "../redux/action";
+import { commentsReducer } from "../redux/commentsReducer";
+import Modal from '../atom/Modal'
 const Comments = () => {
   const id = Math.floor(Math.random() * 99999);
   const [textComment, setTextComment] = useState("");
-
+  const [modalEmptyComment, setModalEmptyComment] = useState(false);
   const dispatch = useDispatch(commentsReducer);
 
   const comments = useSelector((state) => {
@@ -24,6 +24,7 @@ const Comments = () => {
     if (textComment.trim() !== "") {
       dispatch(commentCreate(textComment, id));
     } else {
+      setModalEmptyComment(true)
       console.log("eempty");
     }
   };
@@ -53,6 +54,7 @@ const Comments = () => {
       {!!comments.length &&
         commentsShow &&
         comments.map((item, i) => <SingleComment key={i} commentData={item} />)}
+      {modalEmptyComment && <Modal  setIsOpenModal={setModalEmptyComment} titleModal={`You cannot add an empty value`} />}
     </div>
   );
 };

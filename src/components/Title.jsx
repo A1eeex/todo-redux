@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { inputReducer } from "./redux/inputReducer";
-import { inputText } from "./redux/action";
+import { inputReducer } from "../redux/inputReducer";
+import { inputText } from "../redux/action";
 
 const Title = (props) => {
   const dispatch = useDispatch(inputReducer);
